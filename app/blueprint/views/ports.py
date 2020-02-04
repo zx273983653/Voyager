@@ -1,6 +1,7 @@
 import math
 import datetime
 import re
+import json
 
 from flask import render_template
 from flask import request
@@ -111,7 +112,9 @@ def ports_controllers():
             if target_id == None and len(ip_address) > 0:
                 port = ",".join(ports.split("\n"))
                 # target = str([",".join(ip_address.split("\n")), port])
-                target = str([",".join([i for i in ip_address.split("\n") if len(i) > 0]), port])
+                # target = str([",".join([i for i in ip_address.split("\n") if len(i) > 0]), port])
+                target = json.dumps([",".join([i for i in ip_address.split("\n") if len(i) > 0]), port],
+                                    ensure_ascii=False)
 
                 len_ip = get_ip_list(ip_address.split("\n"))
 
