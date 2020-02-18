@@ -1,6 +1,7 @@
 import math
 import datetime
 import ast
+import json
 
 from flask import render_template
 from flask import request
@@ -94,7 +95,7 @@ def dirs_controller():
             if len(ip_address) != 0:
                 # 输入文本的方案
 
-                # [{'http_address': 'http://192.168.3.2:8123', 'keydict': 'common.txt', 'parent_name': '齐鲁师范学院', 'pid': '141aa854-a78c-42fe-bbf4-99b7d0be37aa'},]
+                # [{'http_address': 'http://192.168.3.2:8123', 'keydict': 'common.txt', 'parent_name': '测试项目', 'pid': '141aa854-a78c-42fe-bbf4-99b7d0be37aa'},]
                 pid = get_uuid()
                 target_list = list()
 
@@ -110,7 +111,8 @@ def dirs_controller():
                         target_list.append(new_dict)
 
                 task = {"id": pid, "create_date": datetime.datetime.now(), "parent_name": project,
-                        "target": str(target_list), "task_type": "即时任务", "hack_type": "目录扫描", "status": "Running",
+                        "target": json.dumps(target_list, ensure_ascii=False), "task_type": "即时任务", "hack_type": "目录扫描",
+                        "status": "Running",
                         "progress": "0.00%", "contain_id": "Null", "end_time": "Null",
                         "live_host": 0, "hidden_host": len(target_list), "total_host": "{}",
                         "user": session.get("admin")}
@@ -123,7 +125,6 @@ def dirs_controller():
                 return jsonify(data)
 
             if child_task_name != None:
-
                 task_id_new = get_uuid()
                 task = {"id": task_id_new, "create_date": datetime.datetime.now(), "parent_name": project,
                         "target": "Null", "task_type": "即时任务", "hack_type": "目录扫描", "status": "Running",
