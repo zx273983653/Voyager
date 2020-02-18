@@ -8,7 +8,7 @@ import datetime
 import threading
 import time
 import queue
-import ast
+import json
 
 THREADS = 10
 
@@ -115,7 +115,6 @@ class ControllerDirs():
             target_content = sess["target"]
 
             for k in ast.literal_eval(target_content):
-
                 self.target_queue.put_nowait(k)
 
             while True:
@@ -178,7 +177,7 @@ class ControllerDirs():
         mongo.db.tasks.update_one(
             {"id": self.pid},
             {'$set': {
-                'target': str(info),
+                'target': json.dumps(info, ensure_ascii=False),
                 'hidden_host': len(info),
 
             }
