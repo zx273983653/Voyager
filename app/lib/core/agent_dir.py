@@ -9,6 +9,7 @@ import threading
 import time
 import queue
 import json
+import ast
 
 THREADS = 10
 
@@ -113,6 +114,8 @@ class ControllerDirs():
             target_list = list()
 
             target_content = sess["target"]
+
+            print(target_content)
 
             for k in ast.literal_eval(target_content):
                 self.target_queue.put_nowait(k)
