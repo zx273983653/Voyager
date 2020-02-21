@@ -274,8 +274,8 @@ def ports_controllers():
                 new_dict["端口"] = i["port"]
                 new_dict["服务"] = i["service"]
                 new_dict["指纹"] = i["banner"]
-                new_dict["创建时间"] = i["start"]
-                new_dict["结束时间"] = i["end"]
+                new_dict["创建时间"] = i["create_date"]
+                new_dict["结束时间"] = i["end_time"]
 
                 if "tag" in i:
 
