@@ -13,7 +13,7 @@ pipenv install
 
 
 # 下载所需的镜像
-docker pull ap0llo/oneforall:0.0.8
+docker pull ap0llo/oneforall:0.0.9
 docker pull ap0llo/nmap:7.80
 docker pull ap0llo/dirsearh:0.3.9
 docker pull al0llo/poc:xunfeng

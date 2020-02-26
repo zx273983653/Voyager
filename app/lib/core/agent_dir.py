@@ -65,7 +65,7 @@ class ControllerDirs():
                 sess = mongo.db.tasks.find_one({"id": self.pid})
 
                 # 项目被删除的时候
-                if sess == None:
+                if sess is None:
                     return True
 
                 target_list = list()
@@ -108,14 +108,12 @@ class ControllerDirs():
             sess = mongo.db.tasks.find_one({"id": self.pid})
 
             # 项目被删除的时候
-            if sess == None:
+            if sess is None:
                 return "flag"
 
             target_list = list()
 
             target_content = sess["target"]
-
-            print(target_content)
 
             for k in ast.literal_eval(target_content):
                 self.target_queue.put_nowait(k)
@@ -159,7 +157,7 @@ class ControllerDirs():
         sess = mongo.db.tasks.find_one({"id": self.pid})
 
         # 项目被删除的时候
-        if sess == None:
+        if sess is None:
             return True
 
         if len(info) == 0:
@@ -203,7 +201,7 @@ class ControllerDirs():
         while True:
 
             task_dir = mongo.db.tasks.find_one({"id": self.pid})
-            if task_dir == None:
+            if task_dir is None:
                 return "flag"
 
             process_json = ast.literal_eval(task_dir["total_host"])

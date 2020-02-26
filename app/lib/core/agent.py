@@ -49,7 +49,7 @@ class Controller(object):
 
             task = mongo.db.tasks.find_one({'id': uid})
 
-            if task == None:
+            if task is None:
                 return True
 
             if mongo.db.tasks.find({'status': "Running"}).count() > 1:
@@ -58,18 +58,17 @@ class Controller(object):
             else:
                 break
 
-        contain = DOCKER_CLIENT.containers.run("ap0llo/oneforall:0.0.8", [uid], remove=True, detach=True,
+        contain = DOCKER_CLIENT.containers.run("ap0llo/oneforall:0.0.9", [uid], remove=True, detach=True,
                                                auto_remove=True,
                                                network="host")
 
         mongo.db.tasks.update_one({"id": uid}, {"$set": {"contain_id": contain.id}})
 
-
         # 心跳线程用来更新任务状态
         while True:
 
             task_dir = mongo.db.tasks.find_one({"id": uid})
-            if task_dir == None:
+            if task_dir is None:
                 return True
 
             process_json = ast.literal_eval(task_dir["hidden_host"])
@@ -86,7 +85,6 @@ class Controller(object):
                 now_progress = now_progress + progress_
 
             progress = '{0:.2f}%'.format(now_progress / tasks_num)
-
 
             if progress == "100.00%":
                 mongo.db.tasks.update_one(
@@ -114,7 +112,6 @@ class Controller(object):
 
             time.sleep(3)
 
-
     @staticmethod
     @threaded
     def ports_scan(uid):
@@ -130,7 +127,7 @@ class Controller(object):
 
             task = mongo.db.tasks.find_one({'id': uid})
 
-            if task == None:
+            if task is None:
                 return True
 
             if mongo.db.tasks.find({'status': "Running"}).count() > 1:
