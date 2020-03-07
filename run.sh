@@ -25,7 +25,6 @@ docker pull ap0llo/nmap:7.80
 docker pull ap0llo/dirsearch:0.3.9
 docker pull ap0llo/poc:xunfeng
 docker pull ap0llo/poc:kunpeng
-docker pull ap0llo/awvs:12
 docker pull mongo:4.1
 
 # 运行数据库
