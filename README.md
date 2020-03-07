@@ -73,7 +73,7 @@ Web框架: **Flask(1.1.1)**
 # apt-get update && apt-get install docker-ce -y
 # systemctl enable docker
 # systemctl start docker
-# apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev
+# apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
 ```
 
 ![](img/img3.png)
