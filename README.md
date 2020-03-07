@@ -65,16 +65,17 @@ Web框架: **Flask(1.1.1)**
 这里以Kali linux 2019.4作为基础操作系统
 
 ### 0x001 安装docker 
-由于Kali默认没有安装Docker，需要手动安装
+由于Kali默认没有安装Docker，需要手动安装,接下来的操作请以root权限运行
 
 ```bash
-# curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-# echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
-# apt-get update && apt-get install docker-ce -y
-# systemctl enable docker
-# systemctl start docker
-# apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
-# echo "OK"
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
+apt update && apt install docker-ce -y && apt install build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
+systemctl enable docker
+systemctl start docker 
+echo "OK"
+
 
 ```
 
