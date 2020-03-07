@@ -74,6 +74,8 @@ Web框架: **Flask(1.1.1)**
 # systemctl enable docker
 # systemctl start docker
 # apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
+# echo "OK"
+
 ```
 
 ![](img/img3.png)
