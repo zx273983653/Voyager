@@ -74,8 +74,6 @@ echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' >
 apt update && apt install docker-ce -y && apt install build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
 systemctl enable docker
 systemctl start docker 
-echo "OK"
-
 
 ```
 
