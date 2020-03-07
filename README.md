@@ -64,23 +64,10 @@ Web框架: **Flask(1.1.1)**
 
 这里以Kali linux 2019.4作为基础操作系统
 
-### 0x001 安装docker 
-由于Kali默认没有安装Docker，需要手动安装,接下来的操作请以root权限运行
-
-```bash
-
-curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
-apt update && apt install docker-ce -y && apt install build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
-systemctl enable docker
-systemctl start docker 
-
-```
-
-![](img/img3.png)
 
 
-### 0x002 下载源码安装
+### 0x001 下载源码安装
+我把步骤都写在run.sh里了，理论上run.sh适应与Debian系操作系统(包括Debian, Kali, Ubuntu)
 
 ```bash
 git clone https://github.com/ody5sey/Voyager.git
@@ -88,10 +75,11 @@ cd Voyager
 bash run.sh
 ```
 
-
-### 0x003 运行
+### 0x002 运行
 
 ```bash
+source ~/.bashrc
+pipenv shell
 python manager.py
 ```
 

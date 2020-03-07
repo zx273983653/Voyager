@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# 安装docker和依赖
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
+apt update && apt install docker-ce -y && apt install build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev -y
+systemctl enable docker
+systemctl start docker
 
 # 准备Python环境
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -19,6 +25,7 @@ docker pull ap0llo/nmap:7.80
 docker pull ap0llo/dirsearch:0.3.9
 docker pull ap0llo/poc:xunfeng
 docker pull ap0llo/poc:kunpeng
+docker pull ap0llo/awvs:12
 docker pull mongo:4.1
 
 # 运行数据库
@@ -30,3 +37,6 @@ docker run --rm --network="host" ap0llo/poc:xunfeng init
 
 # 初始化kunpeng镜像
 docker run --rm --network="host" ap0llo/poc:kunpeng init
+
+# 结束
+echo "OK"
