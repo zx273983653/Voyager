@@ -70,9 +70,10 @@ Web框架: **Flask(1.1.1)**
 ```bash
 # curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 # echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
-# apt-get update && apt-get install docker-ce
+# apt-get update && apt-get install docker-ce -y
 # systemctl enable docker
 # systemctl start docker
+# apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev
 ```
 
 ![](img/img3.png)
